@@ -1,6 +1,5 @@
 //import React, { useEffect } from "react";
 import { useState} from "react";
-import { db } from "../secrets";
 import { save } from "../lib/firestore";
 export const Notes = () => {
 
@@ -30,7 +29,7 @@ const handleSend = e =>  {
 return (
       <>
       <div>
-      <input type="string"id= "text"  maxlength="200" minlength="20" name="name" placeholder="Note..." value= {notes.value} onChange={handleInput} />
+      <input type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder="Note..." value= {notes.value} onChange={handleInput} />
         <button class = "btn-save" type="submit"  id = "id" onClick = {handleSend} > Save </button> 
        </div> 
       

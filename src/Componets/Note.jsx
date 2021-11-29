@@ -9,9 +9,9 @@ export const Note = () => {
   useEffect(() => {
     db.collection('noteCollection')
       .get()
-      .then(querySnapshot => {
+      update(querySnapshot => {
         const notes = [];
-        querySnapshot.forEach(doc => {
+        (querySnapshot).forEach(doc => {
           //console.log(doc.id, doc.data());
          notes.push({...doc.data(), id:doc.id });  
         });
@@ -21,26 +21,13 @@ export const Note = () => {
   }, []);
 console.log(note);
 
-/*const handleSend = e =>  {
-  //console.log('handleSend');
-  e.preventDefault();
- const currentId = (doc.id)
-  deleteNote(currentId).then(() => 
-  console.log("se borra")
-  );
-};*/
-const handleSendE = e =>  {
-  console.log('handleSend');
-  e.preventDefault();
-const getId = note;
-console.log();
-};
+
 const handleSendD = e =>  {
-  console.log('handleSend');
+  console.log("funciona el click de eliminar");
   e.preventDefault();
-const getId = note "";
-console.log();
-  deleteNote(note.id).then(() => 
+  const id= e.target.dataset.id;
+console.log(e.target.dataset.id);
+  deleteNote(id).then(() => 
   console.log("se borra")
   );
 };
@@ -51,7 +38,7 @@ console.log();
       ><div class = "div-text" data-id={item.id} key = {i}>
       <p data-id={item.id}>{ item.text}</p></div>
       <div data-id={item.id} class= "div-button">
-      <button class = "button-edit" data-id={item.id} onClick = {handleSendE}>Edit</button>
+      <button class = "button-edit" data-id={item.id} >Edit</button>
      <button class = "button-delete" data-id={item.id} onClick = {handleSendD}>Delete</button>
      </div>
      </div>)})}
