@@ -9,4 +9,4 @@ const Exit = () => {
             
       )  
     }
-    export default Exit
+    export default Exit 

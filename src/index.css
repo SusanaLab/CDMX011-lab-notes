@@ -33,7 +33,7 @@ margin: 40px;
 font-size: 30px;
 font-family: Ubuntu;
 }
-#btn-save{
+.btn-save{
 color: #FFFFFF;
 border-color: #62C082;
 background: #62C082;
@@ -64,3 +64,49 @@ justify-content: center;
   #div-logo {
     display: flex;
   }
+
+  .div-notas{
+  display: flex;
+    flex-wrap: wrap;
+  }
+.div-note{
+display: flex;
+flex-direction: column;
+border: 6px solid  #8C9F48;
+width: 160px;
+height: 210px;
+margin: 8px;
+box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+}
+.div-text{
+  width: 160px;
+  height: 190px;
+  align-content: center;
+  text-align: center;
+  font-family: Yaldevi Colombo Medium;
+  color: #44644F;
+  
+}
+.div-button{
+  justify-content: center;
+align-content: center;
+}
+.button-edit{
+  margin:0px, 10px, 0px, 10px;
+  background: #62C082;
+  border-radius: 10px;
+  border: 0px;
+ box-sizing: border-box;
+ color: #05471c;
+ font-family: Ubuntu;
+
+}
+.button-delete{
+
+  font-family: Ubuntu;
+  background: #62C082;
+  border-radius: 10px;
+  border: 0px;
+ box-sizing: border-box;
+ color: #05471c;
+}

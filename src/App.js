@@ -1,8 +1,9 @@
 import './App.css';
 import { Routes, Route, Link } from "react-router-dom";
-import CrearNota from './Componets/CrearNota.jsx';
-import Exit from './Componets/Exit';
+import Exit from './Componets/Exit.jsx';
 import logo from "./assets/logo.png";
+import Notes from './Componets/Notes';
+import { Note } from './Componets/Note';
 function App() {
    //logica de firebase 
    function Home() {
@@ -10,10 +11,12 @@ function App() {
       <><>
 
         <nav>+
-          <Link to="/about">About</Link>
+          <button to="/about">About</button>
         </nav>
       </><Exit /><div id="div-logo"> <img id="img-logo" src={logo} alt="img" className="home-img" /> </div>
-      <CrearNota /></>
+      <Notes />
+      <Note />
+      </>
     );
   }
   
