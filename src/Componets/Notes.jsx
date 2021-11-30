@@ -4,9 +4,10 @@ import { save } from "../lib/firestore";
 export const Notes = () => {
 
 const emptyNote =[];
-
+//Agregar el estado para ver cambios en el input
 const [notes, setNotes] = useState(emptyNote);
-//
+
+//Pasamos nuestro valor a setNotes
 const handleInput= e =>  {
   e.preventDefault();
   const {value} = e.target;
@@ -22,15 +23,16 @@ const handleSend = e =>  {
       }
       save(notes).then(() => 
       console.log("se guarda")
-      );
+      ); 
+    
     };
-    //Traer todos nuestros documentos
+    //Actualizar documentos
     
 return (
       <>
       <div>
-      <input type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder="Note..." value= {notes.value} onChange={handleInput} />
-        <button class = "btn-save" type="submit"  id = "id" onClick = {handleSend} > Save </button> 
+      <input type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes.value} onChange={handleInput} />
+        <button className = "btn-save" type="submit"  id = "id" onClick = {handleSend} > Save </button> 
        </div> 
       
        </>

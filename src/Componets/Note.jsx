@@ -3,12 +3,13 @@ import { useState} from "react";
 import { db } from "../secrets";
 import { update, deleteNote } from "../lib/firestore";
 export const Note = () => {
-  //Traer todos nuestros document
+  //Traer todos nuestros documentos
   const emptyNote =[];
   const [note, setNote] =  useState(emptyNote);
   useEffect(() => {
     db.collection('noteCollection')
       .get()
+      //Actualizamos nuestras notas al instante
       update(querySnapshot => {
         const notes = [];
         (querySnapshot).forEach(doc => {
@@ -16,30 +17,37 @@ export const Note = () => {
          notes.push({...doc.data(), id:doc.id });  
         });
         setNote(notes);
-        console.log(notes)
+        //console.log(notes)
       });
   }, []);
-console.log(note);
-
-
+//console.log(note);
+//Eliminar las publicaciones de la interfaz y firebase
 const handleSendD = e =>  {
   console.log("funciona el click de eliminar");
   e.preventDefault();
   const id= e.target.dataset.id;
-console.log(e.target.dataset.id);
+//console.log(e.target.dataset.id);
   deleteNote(id).then(() => 
   console.log("se borra")
   );
 };
+//Editar publicaciones 
+const handleSendE = e =>  {
+  //console.log("funciona el click de eliminar");
+  e.preventDefault();
+  const id = e.target.dataset.id;
+console.log(e.target.dataset.id);
+
+};
   return (
-    <div class = "div-notas">
+    <div className = "div-notas">
     {note.map((item,i) =>  {
-      return (<div class = "div-note" data-id={item.id}
-      ><div class = "div-text" data-id={item.id} key = {i}>
+      return (<div className = "div-note" data-id={item.id}
+      ><div className = "div-text" data-id={item.id} >
       <p data-id={item.id}>{ item.text}</p></div>
-      <div data-id={item.id} class= "div-button">
-      <button class = "button-edit" data-id={item.id} >Edit</button>
-     <button class = "button-delete" data-id={item.id} onClick = {handleSendD}>Delete</button>
+      <div data-id={item.id} className= "div-button">
+      <button className = "button-edit" data-id={item.id} onClick = {handleSendE} >Edit</button>
+     <button className = "button-delete"  data-id={item.id} onClick = {handleSendD}>Delete</button>
      </div>
      </div>)})}
      </div>

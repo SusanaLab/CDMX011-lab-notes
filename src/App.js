@@ -4,6 +4,7 @@ import Exit from './Componets/Exit.jsx';
 import logo from "./assets/logo.png";
 import Notes from './Componets/Notes';
 import { Note } from './Componets/Note';
+import Loging from './Componets/Loging';
 function App() {
    //logica de firebase 
    function Home() {
@@ -11,7 +12,7 @@ function App() {
       <><>
 
         <nav>+
-          <button to="/about">About</button>
+          <Link to="/about">About</Link>
         </nav>
       </><Exit /><div id="div-logo"> <img id="img-logo" src={logo} alt="img" className="home-img" /> </div>
       <Notes />
@@ -24,8 +25,7 @@ function App() {
     return (
       <>
         <main>
-          <h2> Aqui va el login </h2>
-         
+         <Loging/>
         </main>
         <nav>
           <Link to="/">Home</Link>
