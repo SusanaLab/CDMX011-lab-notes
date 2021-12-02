@@ -31,6 +31,7 @@ const handleSend = e =>  {
 return (
       <>
       <div>
+      
       <input type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes.value} onChange={handleInput} />
         <button className = "btn-save" type="submit"  id = "id" onClick = {handleSend} > Save </button> 
        </div> 

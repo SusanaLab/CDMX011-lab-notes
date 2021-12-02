@@ -140,7 +140,7 @@ color: #416345;
 
 }
 .text-login{
-text-align: right;
+text-align: left;
   font-family: Ubuntu;
 font-style: normal;
 font-weight: normal;
@@ -151,7 +151,7 @@ color: #446448;
 }
 .input-login{
   margin: 20px;
-  position: relative;
+  text-align: center;
   font-family: Ubuntu;
 font-style: normal;
 font-weight: normal;
@@ -166,7 +166,6 @@ border-color: rgb(255, 255, 255);
 }
 #btn-singup{
   margin: 20px;
-  position: relative;
 border-radius: 30px;
   background: #62C082;
   width: 163.75px;
@@ -195,7 +194,7 @@ color: #000000;
 #img-google{
   margin: 20px;
   position: relative;
-  width: 60px;
-height: 60px;
+  width: 50px;
+height: 50px;
 border: 10px;
 }

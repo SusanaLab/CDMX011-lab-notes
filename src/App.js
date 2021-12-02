@@ -8,11 +8,15 @@ import Loging from './Componets/Loging';
 function App() {
    //logica de firebase 
    function Home() {
+    const handleSend= e =>  {
+      e.preventDefault();
+      //console.log(name, value);
+    }
     return (
       <><>
 
-        <nav>+
-          <Link to="/about">About</Link>
+        <nav>
+          <Link  to="/about">About</Link>
         </nav>
       </><Exit /><div id="div-logo"> <img id="img-logo" src={logo} alt="img" className="home-img" /> </div>
       <Notes />

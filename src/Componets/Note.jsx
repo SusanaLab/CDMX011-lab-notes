@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useState} from "react";
 import { db } from "../secrets";
-import { update, deleteNote } from "../lib/firestore";
+import { update, deleteNote, editNote } from "../lib/firestore";
 export const Note = () => {
   //Traer todos nuestros documentos
   const emptyNote =[];
   const [note, setNote] =  useState(emptyNote);
+  const [noteEdit, setNoteEdit] =  useState(note);
   useEffect(() => {
     db.collection('noteCollection')
       .get()
@@ -28,7 +29,7 @@ const handleSendD = e =>  {
   const id= e.target.dataset.id;
 //console.log(e.target.dataset.id);
   deleteNote(id).then(() => 
-  console.log("se borra")
+  console.log()
   );
 };
 //Editar publicaciones 
@@ -36,7 +37,7 @@ const handleSendE = e =>  {
   //console.log("funciona el click de eliminar");
   e.preventDefault();
   const id = e.target.dataset.id;
-console.log(e.target.dataset.id);
+console.log(id);
 
 };
   return (
