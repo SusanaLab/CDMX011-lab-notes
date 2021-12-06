@@ -3,16 +3,17 @@ import logo from "../assets/logo.png";
 import Inicio from "../assets/inicio.png";
 import Google from "../assets/google.png";
 import firebase from 'firebase';
-import { useState} from "react";
+import { useNavigate } from "react-router";
+//import { useState} from "react";
  const Loging = () => {
-  const emptyNote ="";
+  /*const emptyNote ="";
    const [correo, setCorreo] = useState(emptyNote);
    const handleInput= e =>  {
     e.preventDefault();
     const {value} = e.target;
     console.log(value);
     setCorreo(value);
-  }
+  }*/
   /*const handleSendd = e =>  {
         //console.log('handleSend');
         e.preventDefault();
@@ -34,17 +35,18 @@ function handleSendCc() {
           // ...
         });
     });*/
- 
+    const navigate = useNavigate();
   function handleSend() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth()
       .signInWithPopup(provider)
       .then(() => {
+     navigate("/Home"); 
       }).catch(() => {
         alert('Inicio de sesion exitoso');
       });
   }
- 
+  
   return (
     <div id="div-login">
     <img id="img-inicio" src={Inicio} alt="img" className="inicio-img" />
@@ -59,7 +61,6 @@ function handleSendCc() {
      </form> 
      <h3 id="or">- Or -</h3>
      <img id="img-google" src={Google} alt="img" className="google-img" onClick = {handleSend}/>
-    
     </div>
   );
 

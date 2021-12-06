@@ -7,3 +7,4 @@ export const save = (text) =>
 export const update = (callback) => db.collection('noteCollection').onSnapshot(callback);
 export const deleteNote = (id) => db.collection('noteCollection').doc(id).delete();
 export const editNote = (id, note) => db.collection('noteCollection').doc(id).update({ note });
+export const edit = (id) => db.collection('noteCollection').doc(id).get();
