@@ -3,39 +3,46 @@ import logo from "../assets/logo.png";
 import Inicio from "../assets/inicio.png";
 import Google from "../assets/google.png";
 import firebase from 'firebase';
+import { useState} from "react";
 import { useNavigate } from "react-router";
 //import { useState} from "react";
  const Loging = () => {
-  /*const emptyNote ="";
-   const [correo, setCorreo] = useState(emptyNote);
-   const handleInput= e =>  {
+   const [correo, setCorreo] = useState('');
+   const [contraseña, setContraseña] = useState('');
+  const navigate = useNavigate();
+   const handleInputCorreo= e =>  {
     e.preventDefault();
     const {value} = e.target;
-    console.log(value);
+    //console.log( value);
     setCorreo(value);
-  }*/
-  /*const handleSendd = e =>  {
-        //console.log('handleSend');
-        e.preventDefault();
-
-        console.log("se guarda")
-      };
-function handleSendCc() {
-    const formRegistro = document.querySelector('#formRegistro');
-    formRegistro.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const correo = document.querySelector('#correo').value;
-      const contraseña = document.querySelector('#contraseña').value;
+  }
+  const handleInputContraseña= e =>  {
+    e.preventDefault();
+    const {value} = e.target;
+    //console.log( value);
+    setContraseña(value);
+  }
+  const handleSendCorreo = e =>  {
+    //console.log('handleSend');
+    e.preventDefault();
+    
+    if(!correo&&contraseña){
+      alert("Please write something")
+      
+    }else{
       firebase.auth()
-        .createUserWithEmailAndPassword(correo, contraseña)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          formRegistro.reset();
-          console.log(user);
-          // ...
-        });
-    });*/
-    const navigate = useNavigate();
+            .createUserWithEmailAndPassword(correo, contraseña)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              const notes = [];              
+              console.log(user);
+        //console.log("se guarda")
+        navigate("/Home"); 
+      }
+         ); 
+         }
+  }; 
+  
   function handleSend() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth()
@@ -45,8 +52,8 @@ function handleSendCc() {
       }).catch(() => {
         alert('Inicio de sesion exitoso');
       });
-  }
-  
+ 
+    }
   return (
     <div id="div-login">
     <img id="img-inicio" src={Inicio} alt="img" className="inicio-img" />
@@ -54,15 +61,15 @@ function handleSendCc() {
      <h1 id="sing-up">Sing up</h1>
      <form id='#formRegistro'>
      <h2 className ="text-login">Email</h2>
-     <input  className ="input-login"  id="correo" type="text" placeholder="example@gmail.com"/>
+     <input  className ="input-login"  id="correo"  value= {correo}  onChange={handleInputCorreo} type="text" placeholder="example@gmail.com"/>
      <h2 className ="text-login" >Password</h2>
-     <input className ="input-login" id="contraseña" type="text" placeholder="**********"/>
-     <button id="btn-singup" >SING UP</button>
+     <input className ="input-login" id="contraseña" type="password" name="password" value= {contraseña}  onChange={handleInputContraseña} placeholder="**********"/>
+     <button id="btn-singup" onClick = {handleSendCorreo} >SING UP</button>
      </form> 
      <h3 id="or">- Or -</h3>
      <img id="img-google" src={Google} alt="img" className="google-img" onClick = {handleSend}/>
     </div>
   );
 
- }
+  }
 export default Loging;
