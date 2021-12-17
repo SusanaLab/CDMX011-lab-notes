@@ -79,8 +79,7 @@ docRef.get().then((doc) => {
 return (
       <>
       <div>
-      
-      <input type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes}  onChange={handleInput} />
+      <textarea className = "textarea" type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes}  onChange={handleInput} />
        </div> 
         <button className = "btn-save" type="submit"  id = "id" onClick =  {editNote?handleUpdate:handleSend} >{editNote ? "Update" : "Save" } </button> 
       

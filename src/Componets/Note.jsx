@@ -41,7 +41,6 @@ const handleSendD = e =>  {
 };
 //Editar publicaciones 
 
-
   return (
     <>
     <Notes {...{currentNote, note, Notes}} />
@@ -49,6 +48,7 @@ const handleSendD = e =>  {
     {note.map((item,i) =>  {
       return (<div className = "div-note"  key ={item.id}  data-id={item.id}
       ><div className = "div-text" data-id={item.id} >
+     
       <p data-id={item.id}>{ item.text}</p></div>
       <div data-id={item.id}  className= "div-button">
       <button className = "button-edit"  data-id={item.id} onClick = {() =>setCurrentNote(item.id)} >Edit</button>

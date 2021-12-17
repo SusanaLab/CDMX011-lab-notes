@@ -8,15 +8,15 @@ const Exit = () => {
     const navigate = useNavigate();
    
    function handleSend() {
-    firebase.auth().signOut()
-      .then(() => {
-     navigate("/"); 
-      }).catch(() => {
-        alert('Inicio de sesion exitoso');
-      });
+    firebase.auth().signOut().then(() => {
+       alert("se cerro la sesion") 
+       navigate("/"); // Sign-out successful.
+    }).catch((error) => {
+      alert("ocurrio un error")
+    });
  
     }
-    // Imprimir en consola despues de hacer click en el boton de  enviar los
+    //    Imprimir en consola despues de hacer click en el boton de  enviar los
     return (
       
           <div id= "div-btn-exit" > 
@@ -28,4 +28,4 @@ const Exit = () => {
       )  
     }
     export default Exit 
-    
+  
