@@ -3,15 +3,30 @@ import { useState} from "react";
 import React, { useEffect } from "react";
 import { save } from "../lib/firestore";
 import { editUpdate } from "../lib/firestore";
-
+//import firebase from 'firebase';
 import { db } from "../secrets";
-
-
-export const Notes = ({ currentNote }) => {
+export const Notes = ({ currentNote, newuser }) => {
 //console.log(props)
 //Agregar el estado para ver cambios en el input
+/* let userSigned = firebase.auth().currentUser;
+//console.log(userSigned)
+const user = firebase.auth().currentUser;
+/* const logUser = user.bc.email;
+ console.log(user.bc.email) */ 
+
+
 const [notes, setNotes] = useState('');
 const [editNote, setEditNote] = useState(false);
+//const [userID, setUserID] = useState(false);
+//Obtener datos de usuario mediante el objeto Auth ()
+/* const getusuario = (user) => {
+firebase.auth().onAuthStateChanged(user => {  if(user) {
+  let usuario = user.uid;
+  setUserID(usuario)  
+  console.log(userID)
+  console.log(user.email)  }
+})
+} */
 //Pasamos nuestro valor a setNotes
 const handleInput= e =>  {
   e.preventDefault();
@@ -29,6 +44,7 @@ const handleSend = e =>  {
       }
       save(notes).then(() => 
       console.log("se guarda")
+    
       ); 
     
     }; 
@@ -78,6 +94,7 @@ docRef.get().then((doc) => {
     
 return (
       <>
+        <h1 id="logUser" >Welcome</h1>
       <div>
       <textarea className = "textarea" type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes}  onChange={handleInput} />
        </div> 

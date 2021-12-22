@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
  const Loging = () => {
    const [correo, setCorreo] = useState('');
    const [contraseña, setContraseña] = useState('');
-   const [userId, setUserId] = useState('');
+   //const [userId, setUserId] = useState('');
    
   const navigate = useNavigate();
    const handleInputCorreo= e =>  {
@@ -30,13 +30,14 @@ import { useNavigate } from "react-router";
     firebase.auth().signInWithEmailAndPassword(correo, contraseña)
     .then((userCredential) => {
       console.log ("Signed in");
-      let user = userCredential.user;
-      setUserId(user)
+     /*  let user = userCredential.user;
+      setUserId(user) */
       navigate("/Home"); 
     })
     .catch((error) => {
       let errorCode = error.code;
       let errorMessage = error.message;
+      console.log(errorCode, errorMessage)
     });
   }; 
   

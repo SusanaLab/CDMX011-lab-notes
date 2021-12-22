@@ -213,3 +213,15 @@ color: #000000;
 height: 50px;
 border: 10px;
 }
+#logUser{
+  margin: 20px;
+  position: relative;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 21px;
+
+color: #0a2410;
+
+}

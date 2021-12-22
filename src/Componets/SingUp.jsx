@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from "../assets/logo.png";
 import Inicio from "../assets/inicio.png";
-import Google from "../assets/google.png";
+//import Google from "../assets/google.png";
 import firebase from 'firebase';
 import { useState} from "react";
 import { useNavigate } from "react-router";
@@ -34,7 +34,7 @@ function SingUp() {
              .createUserWithEmailAndPassword(correo, contraseña)
              .then((userCredential) => {
                const user = userCredential.user;
-               const notes = [];              
+               //const notes = [];              
                console.log(user);
          //console.log("se guarda")
          navigate("/Home"); 
