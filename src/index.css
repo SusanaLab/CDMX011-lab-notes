@@ -1,0 +1,227 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+#div-post{
+display: flex;
+align-items: center;
+justify-content:start;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 500;
+font-size: 500px;
+line-height: 17px;
+color: #FFFFFF;
+}
+#text{
+  height: 50px;
+  width: 300px;
+position: relative;
+border-color: #f7f7f7;
+background: #E5E5E5;
+border-radius: 5px;
+margin: 40px;
+font-size: 30px;
+font-family: Ubuntu;
+color: #05471c;
+}
+.btn-save{
+color: #FFFFFF;
+border-color: #62C082;
+background: #62C082;
+border-radius: 30px;
+font-size: 30px;
+font-family: Ubuntu;
+}
+#div-logo{
+display: flex;
+justify-content: center;
+}
+#div-btn-exit{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#btn-exit{
+  color: #FFFFFF;
+  border-color: #62C082;
+  background: #62C082;
+  border-radius: 30px;
+  margin: 20px;
+  position: relative;
+  font-size: 30px;
+  padding: 10px;
+  font-family: Ubuntu;
+  }
+  #div-logo {
+    display: flex;
+  }
+
+  .div-notas{
+  display: flex;
+    flex-wrap: wrap;
+  }
+.div-note{
+display: flex;
+flex-direction: column;
+border: 6px solid  #62C082;;
+width: 160px;
+height: 210px;
+margin: 8px;
+box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+}
+.div-text{
+  width: 160px;
+  height: 190px;
+  align-content: center;
+  text-align: center;
+  font-family: Yaldevi Colombo Medium;
+  color: #44644F;
+  
+}
+.div-button{
+  justify-content: center;
+align-content: center;
+}
+.button-edit{
+  margin:0px, 10px, 0px, 10px;
+  background: #62C082;
+  border-radius: 5px;
+  border: 0px;
+ box-sizing: border-box;
+ color: #05471c;
+ font-family: Ubuntu;
+margin: 5px;
+}
+.button-delete{
+
+  font-family: Ubuntu;
+  background: #62C082;
+  border-radius: 10px;
+  border: 0px;
+ box-sizing: border-box;
+ color: #05471c;
+}
+#div-login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+#img-inicio {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+#img-logo {
+  position: relative;
+  width: 600px;
+  height: 200px;
+}
+#sing-up {
+  position: relative;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 65px;
+line-height: 41px;
+
+color: #416345;
+
+}
+.text-login{
+text-align: left;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 21px;
+margin: 10px;
+color: #446448;
+}
+.input-login{
+  margin: 20px;
+  text-align: center;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 21px;
+width: 390px;
+height: 50px;
+background: #F6F5F5;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+border-color: rgb(255, 255, 255);
+}
+.btn-singup{
+  margin: 20px;
+border-radius: 30px;
+  background: #62C082;
+  width: 163.75px;
+height: 35px;
+ont-family: Ubuntu;
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 17px;
+border-radius: 10px;
+border-color: rgb(255, 255, 255);
+color: #FFFDFD;
+}
+#btn-singup{
+  margin: 20px;
+border-radius: 30px;
+  background: #62C082;
+  width: 163.75px;
+height: 35px;
+ont-family: Ubuntu;
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 17px;
+border-radius: 10px;
+border-color: rgb(255, 255, 255);
+color: #FFFDFD;
+}
+#or{
+  margin: 20px;
+  position: relative;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 21px;
+
+color: #000000;
+
+}
+#img-google{
+  margin: 20px;
+  position: relative;
+  width: 50px;
+height: 50px;
+border: 10px;
+}
+#logUser{
+  margin: 20px;
+  position: relative;
+  font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 21px;
+
+color: #0a2410;
+
+}
