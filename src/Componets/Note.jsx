@@ -14,16 +14,32 @@ export const Note = () => {
   const logUser = user.email;
    console.log(user.email)*/
   const emptyNote =[];
+  
   const [note, setNote] =  useState(emptyNote);
+  const [email, setEmail] =  useState("");
   //console.log(note);
   const emptyNoteState = '';
 const [currentNote, setCurrentNote] =  useState(emptyNoteState);
   //console.log(currentNote);
   //const uid = firebase.auth().currentUser.uid;
 //console.log(uid) 
-
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    let uid = user.email;
+    setEmail(uid)
+    console.log(uid)
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
   useEffect(() => {
     const getNotes = firebase.auth().onAuthStateChanged((user) => {
+      var uid = user.uid;
+      console.log(uid)
       if (user) { 
     db.collection('noteCollection').where("email", "==", user.email).get()
       update(querySnapshot => {
@@ -58,7 +74,7 @@ const handleSendD = e =>  {
 
   return (
     <>
-    <Notes {...{currentNote, note, Notes}} />
+    <Notes {...{currentNote, note, Notes, email}} />
     <div className = "div-notas">
     {note.map((item,i) =>  {
       return (<div className = "div-note"  key ={item.id}  data-id={item.id}

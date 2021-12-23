@@ -5,7 +5,7 @@ import { save } from "../lib/firestore";
 import { editUpdate } from "../lib/firestore";
 //import firebase from 'firebase';
 import { db } from "../secrets";
-export const Notes = ({ currentNote, newuser }) => {
+export const Notes = ({ currentNote, email }) => {
 //console.log(props)
 //Agregar el estado para ver cambios en el input
 /* let userSigned = firebase.auth().currentUser;
@@ -94,7 +94,7 @@ docRef.get().then((doc) => {
     
 return (
       <>
-        <h1 id="logUser" >Welcome</h1>
+        <h1 id="logUser" >Welcome {email} </h1>
       <div>
       <textarea className = "textarea" type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes}  onChange={handleInput} />
        </div> 

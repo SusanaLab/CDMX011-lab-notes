@@ -67,6 +67,8 @@ console.log(emailVerified)
     const handleSendSingUp = e =>  {
           navigate("/SingUp"); 
     }; 
+   
+
   return (
     <div id="div-login">
     <img id="img-inicio" src={Inicio} alt="img" className="inicio-img" />
