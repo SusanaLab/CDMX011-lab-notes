@@ -5,23 +5,21 @@ import Google from "../assets/google.png";
 import { useState} from "react";
 import firebase from 'firebase';
 import { useNavigate } from "react-router";
-//import { useState} from "react";
+
  const Loging = () => {
    const [correo, setCorreo] = useState('');
    const [contraseña, setContraseña] = useState('');
-   //const [userId, setUserId] = useState('');
+  
    
   const navigate = useNavigate();
    const handleInputCorreo= e =>  {
     e.preventDefault();
     const {value} = e.target;
-    //console.log( value);
     setCorreo(value);
   }
   const handleInputContraseña= e =>  {
     e.preventDefault();
     const {value} = e.target;
-    //console.log( value);
     setContraseña(value);
   }
   
@@ -30,8 +28,6 @@ import { useNavigate } from "react-router";
     firebase.auth().signInWithEmailAndPassword(correo, contraseña)
     .then((userCredential) => {
       console.log ("Signed in");
-     /*  let user = userCredential.user;
-      setUserId(user) */
       navigate("/Home"); 
     })
     .catch((error) => {

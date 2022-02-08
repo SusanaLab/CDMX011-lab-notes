@@ -13,17 +13,14 @@ function SingUp() {
     const handleInputCorreo= e =>  {
      e.preventDefault();
      const {value} = e.target;
-     //console.log( value);
      setCorreo(value);
    }
    const handleInputContraseña= e =>  {
      e.preventDefault();
      const {value} = e.target;
-     //console.log( value);
      setContraseña(value);
    }
    const handleSendCorreo = e =>  {
-     //console.log('handleSend');
      e.preventDefault();
      
      if(!correo&&contraseña){
@@ -36,14 +33,10 @@ function SingUp() {
                const user = userCredential.user;
                //const notes = [];              
                console.log(user);
-         //console.log("se guarda")
          navigate("/Home"); 
          const userSigned = firebase.auth().currentUser;
 
 if (userSigned) {
-  // User is signed in, see docs for a list of available properties
-  // https://firebase.google.com/docs/reference/js/firebase.User
-  // ...
   console.log("is signed")
 } else {
   // No user is signed in.

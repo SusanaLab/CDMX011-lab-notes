@@ -225,3 +225,30 @@ line-height: 21px;
 color: #0a2410;
 
 }
+#contentCategory{
+  display: flex;
+  flex-wrap: wrap;
+}
+#imgCategory{
+position: center;
+margin: 8px;
+width: 227px;
+height: 175px;
+border: 5px solid #C39C84;
+box-sizing: border-box;
+box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+}
+#nameCategory{
+position: relative;
+font-family: Playfair Display;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 48px;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #000000;
+
+}

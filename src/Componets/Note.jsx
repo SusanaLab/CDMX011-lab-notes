@@ -1,47 +1,43 @@
 import { useEffect } from "react";
 import { useState} from "react";
 import { db} from "../secrets";
+import { useContext } from "react";
 import { update, deleteNote} from "../lib/firestore";
+import { FilesContext } from "../context/filesContext";
 import firebase from "firebase";
 import Notes from './Notes';
-//import onAuthStateChanged from "firebase";
 
-export const Note = () => {
-  //obtener el usuario actual
-  /*let userSigned = firebase.auth().currentUser;
-  console.log(userSigned)
-  const user = firebase.auth().currentUser;
-  const logUser = user.email;
-   console.log(user.email)*/
+
+export const Note = (props) => {
+ const { userName} = useContext(FilesContext);
+  console.log( userName); 
   const emptyNote =[];
-  
+  const emptyNoteState = '';
   const [note, setNote] =  useState(emptyNote);
   const [email, setEmail] =  useState("");
-  //console.log(note);
-  const emptyNoteState = '';
-const [currentNote, setCurrentNote] =  useState(emptyNoteState);
-  //console.log(currentNote);
-  //const uid = firebase.auth().currentUser.uid;
-//console.log(uid) 
+  const [currentNote, setCurrentNote] =  useState(emptyNoteState);
+
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
     let uid = user.email;
     setEmail(uid)
     console.log(uid)
+    const displayName = user.displayName;
+    console.log(displayName)
+    const email = user.email;
+    console.log(email)
+    const photoURL = user.photoURL;
+    console.log(photoURL)
     // ...
   } else {
-    // User is signed out
-    // ...
+
   }
 });
   useEffect(() => {
     const getNotes = firebase.auth().onAuthStateChanged((user) => {
-      var uid = user.uid;
-      console.log(uid)
+
       if (user) { 
-    db.collection('noteCollection').where("email", "==", user.email).get()
+    db.collection('blogNotas').where("usuario", "==", userName).get()
       update(querySnapshot => {
         const notes = [];
         (querySnapshot).forEach(doc => {
@@ -57,15 +53,10 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 return getNotes;
 }, []);
- 
 
-//console.log(note);
-//Eliminar las publicaciones de la interfaz y firebase
 const handleSendD = e =>  {
-  //console.log("funciona el click de eliminar");
   e.preventDefault();
   const id= e.target.dataset.id;
-//console.log(e.target.dataset.id);
   deleteNote(id).then(() => 
   console.log()
   );
