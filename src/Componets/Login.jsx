@@ -1,11 +1,11 @@
 import React from 'react';
 import Loging from './Loging';
 
-const Login = () => { 
+const Login = () => {
   return (
-      <>
-    <Loging/>
-</>
+    <>
+      <Loging />
+    </>
   )
 }
 export default Login;

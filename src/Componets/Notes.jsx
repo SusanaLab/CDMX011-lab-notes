@@ -1,108 +1,93 @@
-//import React, { useEffect } from "react";
-import { useState} from "react";
+import { useState } from "react";
 import React, { useEffect } from "react";
 import { save } from "../lib/firestore";
 import { editUpdate } from "../lib/firestore";
-//import firebase from 'firebase';
 import { db } from "../secrets";
-export const Notes = ({ currentNote, newuser }) => {
-//console.log(props)
-//Agregar el estado para ver cambios en el input
-/* let userSigned = firebase.auth().currentUser;
-//console.log(userSigned)
-const user = firebase.auth().currentUser;
-/* const logUser = user.bc.email;
- console.log(user.bc.email) */ 
+export const Notes = ({ currentNote, currentUser, currentName }) => {
+  const [notes, setNotes] = useState('');
+  const [editNote, setEditNote] = useState(false);
+  const [updateComplete, setUpdateComplete] = useState(false);
 
+  const handleInput = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    setNotes(value);
+  };
 
-const [notes, setNotes] = useState('');
-const [editNote, setEditNote] = useState(false);
-//const [userID, setUserID] = useState(false);
-//Obtener datos de usuario mediante el objeto Auth ()
-/* const getusuario = (user) => {
-firebase.auth().onAuthStateChanged(user => {  if(user) {
-  let usuario = user.uid;
-  setUserID(usuario)  
-  console.log(userID)
-  console.log(user.email)  }
-})
-} */
-//Pasamos nuestro valor a setNotes
-const handleInput= e =>  {
-  e.preventDefault();
-  const {value} = e.target;
-  //console.log( value);
-  setNotes(value);
-}
-//guarda las notas
-const handleSend = e =>  {
-      //console.log('handleSend');
-      e.preventDefault();
-      
-      if(!notes){
-        alert("Please write something")
-      }
-      save(notes).then(() => 
-      console.log("se guarda")
-    
-      ); 
-    
-    }; 
-  //editar post 
-  const getData = (id) => {
-  var docRef = db.collection("noteCollection").doc(id);
-docRef.get().then((doc) => {
-    if (doc.exists) {
-        //console.log("Document data:", doc.data());
-        //si existe pasaselo a a mi estado actual
-        const textNote = doc.data().text;
-        //console.log(textNote)
-        setNotes(textNote)
-        setEditNote(true)
-    } else {
-        // doc.data() will be undefined in this case
-        //console.log("No such document!");
+  const handleSend = (e) => {
+    e.preventDefault();
+
+    if (!notes) {
+      alert("Please write something");
+      return;
     }
-}).catch((error) => {
-    //console.log("Error getting document:", error);
-});
-}
-    useEffect(() => {
-      //recibo las props que ocupo para editar 
-      //console.log(currentNote)
-      //si no tiene un componente seleccionado va a guardar
-      if (currentNote === ''){
-        //alert("vacio")
-        setNotes()
-        //console.log("guardandoo")
-      }
-      //tiene un componente seleccionado va a actualizar
-      else{
-        getData(currentNote)
-        //console.log(currentNote)
-      //console.log("editando")
-      };
-      //se ejecuta cuando pasamos el id
-      }, [currentNote]);
+
+    save(notes, currentUser).then(() => {
+      console.log("Note saved: " + notes);
+      setUpdateComplete(false); // Cambia el estado para que el botón vuelva a "Save"
+      setNotes(''); // Limpia el input
+    });
+  };
+
+  const getData = (id) => {
+    var docRef = db.collection("noteCollection").doc(id);
+    docRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const textNote = doc.data().text;
+          setNotes(textNote);
+          setEditNote(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+      });
+  };
 
   const handleUpdate = (id, nota) => {
     const idUpdate = currentNote;
     const textUpdate = notes;
-    editUpdate(idUpdate, textUpdate)
-//console.log("actualizar")
-  }
-    
-return (
-      <>
-        <h1 id="logUser" >Welcome</h1>
-      <div>
-      <textarea className = "textarea" type="string"id= "text"  maxLength="200" minLength="20" name="name" placeholder= "Note..." value= {notes}  onChange={handleInput} />
-       </div> 
-        <button className = "btn-save" type="submit"  id = "id" onClick =  {editNote?handleUpdate:handleSend} >{editNote ? "Update" : "Save" } </button> 
-      
-       </>
-        
-        
-  )  
+    editUpdate(idUpdate, textUpdate).then(() => {
+      setUpdateComplete(true); // Cambia el estado para indicar que la actualización está completa
+    });
+  };
+
+  useEffect(() => {
+    if (currentNote === '') {
+      setNotes('');
+    } else {
+      getData(currentNote);
+    }
+  }, [currentNote, updateComplete]);
+
+  return (
+    <>
+      <h1 id="logUser"> Welcome {currentName}</h1>
+      <div id="input-content">
+        <textarea
+          className="textarea"
+          type="string"
+          id="text"
+          maxLength="200"
+          minLength="20"
+          name="name"
+          placeholder="Note..."
+          value={notes}
+          onChange={handleInput}
+        /> 
+          <button
+        className="btn-save"
+        type="submit"
+        id="id"
+        onClick={editNote ? handleUpdate : handleSend}
+      >
+        {editNote ? "Update" : "Save"}
+      </button>
+      </div>
+   
+    </>
+  );
 };
-export default Notes
+
+export default Notes;
